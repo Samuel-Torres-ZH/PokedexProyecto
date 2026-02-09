@@ -1,0 +1,33 @@
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Navbar fija */
+.navbar {
+    z-index: 1050;
+    height: 70px;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.95); /* Un poco menos transparente para leer mejor */
+    border-radius: 15px;
+    padding: 30px;
+    margin: 0 auto;
+}
+
+/* CORRECCIÓN DE LA FRANJA NEGRA */
+.custom-table thead th {
+    background-color: #212529 !important;
+    color: #ffc107 !important;
+    padding: 15px;
+    border: none;
+    /* Quitamos el sticky-top de la tabla para que no flote sobre los datos */
+    position: relative; 
+}
+
+.custom-table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+}

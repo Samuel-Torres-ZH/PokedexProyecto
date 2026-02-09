@@ -1,0 +1,38 @@
+<div class="overlay">
+    <div class="pokedex-frame">
+        <div class="pokedex-header text-center">
+            REGISTRO DE ENTRENADOR
+        </div>
+
+        <div class="pokedex-screen">
+            <form (ngSubmit)="onRegister()">
+                <div class="mb-3">
+                    <label class="text-white">Nombre de Usuario</label>
+                    <input type="text" name="username" [(ngModel)]="nuevoUsuario.username" 
+                           class="form-control" required placeholder="Ej: Red">
+                </div>
+
+                <div class="mb-3">
+                    <label class="text-white">Contraseña</label>
+                    <input type="password" name="password" [(ngModel)]="nuevoUsuario.password" 
+                           class="form-control" required placeholder="••••••">
+                </div>
+
+                <div class="mb-3">
+                    <label class="text-white">Repetir contraseña</label>
+                    <input type="password" 
+                           name="confirmPassword" 
+                           [(ngModel)]="nuevoUsuario.confirmPassword" 
+                           class="form-control" 
+                           required placeholder="••••••">
+                </div>
+
+                <button type="submit" class="btn-pokedex">Registrar</button>
+            </form>
+
+            <a routerLink="/login" class="btn btn-outline-pokedex w-100 mt-3">
+                VOLVER AL LOGIN
+            </a>
+        </div>
+    </div>
+</div>

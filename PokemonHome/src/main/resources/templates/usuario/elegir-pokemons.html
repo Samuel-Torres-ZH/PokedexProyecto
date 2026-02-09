@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Elegir Pokémon</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url('/img/batalla.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+        }
+
+        .table thead th {
+            background-color: #212529;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="overlay">
+    <div class="container">
+
+        <div class="content-box">
+
+            <h3 class="mb-3">
+                Seleccionar Pokémon para la batalla
+            </h3>
+
+            <div class="mb-3">
+                <a class="btn btn-secondary"
+                   th:href="@{/usuario/pokemons}">
+                    Volver
+                </a>
+            </div>
+
+            <table class="table table-bordered table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="p : ${pokemons}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nombre}"></td>
+                        <td th:text="${p.tipo}"></td>
+                        <td>
+                            <form th:action="@{/batalla}" method="get">
+                                <input type="hidden"
+                                       name="pokemonId"
+                                       th:value="${p.id}">
+                                <button class="btn btn-success btn-sm">
+                                    Elegir
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<div class="overlay">
+    <div class="pokedex-frame">
+
+        <div class="pokedex-header">
+            PokeHome System
+        </div>
+
+        <div class="pokedex-screen">
+
+            <form (submit)="onLogin()">
+
+                <div class="mb-3">
+                    <label>Usuario</label>
+                    <input type="text"
+                           name="username"
+                           [(ngModel)]="username" 
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Contraseña</label>
+                    <div class="input-group">
+                        <input [type]="showPassword ? 'text' : 'password'"
+                               name="password"
+                               [(ngModel)]="password"
+                               class="form-control"
+                               required>
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                (click)="togglePassword()">
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-pokedex w-100">
+                    Ingresar
+                </button>
+            </form>
+
+            <div *ngIf="error" class="alert alert-danger">
+                Usuario o contraseña incorrectos
+            </div>
+
+            <a routerLink="/register"
+               class="btn btn-outline-pokedex w-100 mt-3">
+                Registrar nuevo entrenador
+            </a>
+
+        </div>
+    </div>
+</div>

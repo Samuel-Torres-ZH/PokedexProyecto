@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="card bg-dark text-white border-warning shadow">
+    <div class="card-header border-warning">
+      <h3 class="text-warning mb-0"><i class="bi bi-shield-lock"></i> Panel de Administración</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle">
+          <thead class="text-warning">
+            <tr>
+              <th>Usuario</th>
+              <th>Rol</th>
+              <th>Pokémon Capturados</th>
+              <th>Acciones de Cuenta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of usuarios">
+              <td class="fw-bold">{{ u.username }}</td>
+              <td>
+                <span [class]="u.rol === 'ADMIN' ? 'badge bg-danger' : 'badge bg-info'">
+  {{ u.rol }}
+</span>
+                <button (click)="cambiarRol(u)" class="btn btn-sm btn-outline-light ms-2">🔄</button>
+              </td>
+              <td>
+                <div class="d-flex flex-wrap gap-1">
+                  <div *ngFor="let p of u.pokemons" class="badge bg-secondary d-flex align-items-center">
+                    {{ p.nombre }}
+                    <span (click)="removerPokemon(u.id, p.id)" 
+                          class="ms-2 text-danger cursor-pointer" 
+                          style="cursor:pointer" title="Quitar Pokémon">
+                      &times;
+                    </span>
+                  </div>
+                  <small *ngIf="!u.pokemons || u.pokemons.length === 0" class="text-muted italic">Sin pokémon</small>
+                </div>
+              </td>
+              <td>
+                <div class="btn-group">
+                  <button (click)="cambiarPassword(u.id)" class="btn btn-sm btn-warning">🔑 Pass</button>
+                  <button (click)="eliminarEntrenador(u.id)" class="btn btn-sm btn-danger">🗑️ Eliminar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

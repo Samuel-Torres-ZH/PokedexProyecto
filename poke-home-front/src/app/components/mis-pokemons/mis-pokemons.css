@@ -1,0 +1,30 @@
+/* Fondo oscuro con gradiente */
+.overlay {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+/* Efecto de sombra en el texto del título */
+.shadow-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+}
+
+/* Tarjeta estilo Pokédex */
+.pokedex-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #444;
+}
+
+.pokedex-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3) !important; /* Brillo amarillo */
+    border-color: #ffc107;
+}
+
+/* Animación suave para la carga */
+.animate__animated {
+    animation-duration: 0.8s;
+}

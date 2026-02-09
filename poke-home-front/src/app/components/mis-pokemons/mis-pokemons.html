@@ -1,0 +1,42 @@
+<div class="overlay">
+    <div class="container pt-5">
+        <h2 class="text-center text-warning mb-4 fw-bold shadow-text">🎒 MI MOCHILA POKÉMON</h2>
+        
+        <div class="text-center mt-3 pb-4">
+            <a routerLink="/entrenador/batalla" class="btn btn-outline-light btn-sm px-4">
+    ⬅️ Volver a la Zona de Caza
+</a>
+        </div>
+
+        <div *ngIf="cargando" class="text-center p-5">
+            <div class="spinner-grow text-warning" role="status"></div>
+            <p class="text-white mt-2">Revisando mochila...</p>
+        </div>
+
+        <div *ngIf="!cargando && misPokemons.length === 0" class="text-center text-white mt-5 animate__animated animate__fadeIn">
+            <p class="h4">Tu mochila está vacía... 🏃‍♂️💨</p>
+            <p class="text-muted">¡Sal al mundo y captura a tu primer compañero!</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mt-2" *ngIf="!cargando">
+            <div class="col animate__animated animate__fadeInUp" *ngFor="let p of misPokemons">
+                <div class="card h-100 pokedex-card text-white shadow bg-dark border-secondary">
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="mb-2">
+                            <i class="bi bi-stars text-warning"></i>
+                            <span class="text-muted small ms-1">Mochila</span>
+                        </div>
+                        
+                        <h5 class="card-title fw-bold text-uppercase">{{ p.nombre }}</h5>
+                        <span class="badge rounded-pill bg-info text-dark mb-3">{{ p.tipo }}</span>
+                        
+                        <button (click)="liberarPokemon(p.id)" 
+                                class="btn btn-outline-danger w-100 fw-bold mt-auto btn-sm">
+                            🍃 LIBERAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

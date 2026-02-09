@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-warning">
+  <div class="container">
+    <a class="navbar-brand text-warning fw-bold" routerLink="/">PokeHome 🏠</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <ng-container *ngIf="obtenerRol() === 'ROLE_USER'">
+          <li class="nav-item"><a class="nav-link" routerLink="/pokemons">🐾 Cazar</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/mis-pokemons">🎒 Mochila</a></li>
+        </ng-container>
+        <ng-container *ngIf="obtenerRol() === 'ROLE_ADMIN'">
+          <li class="nav-item"><a class="nav-link" routerLink="/admin/usuarios">👥 Usuarios</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/pokemons">🐉 Gestión</a></li>
+        </ng-container>
+      </ul>
+      <button *ngIf="obtenerRol()" (click)="logout()" class="btn btn-outline-danger btn-sm">Salir</button>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4"><router-outlet></router-outlet></div>
